@@ -1,30 +1,30 @@
 ```
 # Core Libraries
-streamlit==1.29.0
-pandas==2.2.1
-numpy==1.26.4
+streamlit
+pandas
+numpy
 
 # Visualization Libraries
-plotly==5.18.0
-matplotlib==3.8.3
-wordcloud==1.9.1.1
-seaborn==0.13.2
+plotly
+matplotlib
+wordcloud
+seaborn
 
 # Data Processing
-nltk==3.8.1
-gspread==5.12.0
-oauth2client==4.1.3
+nltk
+gspread
+oauth2client
 
 # Optional: Advanced Features
-networkx==3.2.1  # For network graphs
-scikit-learn==1.4.1  # For potential machine learning features
+networkx  # For network graphs
+scikit-learn # For potential machine learning features
 
 # Development and Deployment
-python-dotenv==1.0.0
-pytest==8.1.1  # For testing
-black==24.2.0  # Code formatting
-flake8==7.0.0  # Linting
+python-dotenv
+pytest  # For testing
+black  # Code formatting
+flake8  # Linting
 
 # Security and Compatibility
-typing-extensions==4.10.0
+typing-extensions
 ```
