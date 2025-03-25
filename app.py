@@ -4,6 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
 from data_loader import load_dataset, process_entities, get_unique_locations
+from filters import create_advanced_filters  # Add this import
 from visualization import (
     create_top_entities_chart, 
     create_timeline_chart,
