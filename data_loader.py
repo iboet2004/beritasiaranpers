@@ -41,7 +41,7 @@ def load_dataset(dataset_name):
         dataset_map = {
             "DATASET SP": {
                 "spreadsheet_id": st.secrets["spreadsheets"]["sp_spreadsheet_id"],
-                "worksheet_name": "Sheet1"  # Adjust as needed
+                "worksheet_name": "DATASET SP"  # Adjust as needed
             },
             "DATASET BERITA": {
                 "spreadsheet_id": st.secrets["spreadsheets"]["berita_spreadsheet_id"],
