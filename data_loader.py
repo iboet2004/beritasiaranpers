@@ -45,7 +45,7 @@ def load_dataset(dataset_name):
             },
             "DATASET BERITA": {
                 "spreadsheet_id": st.secrets["spreadsheets"]["berita_spreadsheet_id"],
-                "worksheet_name": "Sheet1"  # Adjust as needed
+                "worksheet_name": "DATASET BERITA"  # Adjust as needed
             }
         }
         
