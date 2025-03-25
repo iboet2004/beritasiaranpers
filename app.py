@@ -140,9 +140,12 @@ def create_sources_trend_analysis(df, entity_col, date_col, selected_sp=None):
     
     # Select top 10 sources for visualization
     top_sources = narasumber_counts.head(10)
-    
+
     # Prepare data for top sources
-    plot_data = weekly_counts[weekly_counts['Narasumber'].isin(top_sources.index)]
+    if not top_sources.empty:
+        plot_data = weekly_counts[weekly_counts['Narasumber'].isin(top_sources.index)]
+    else:
+        plot_data = weekly_counts.copy()  # Pakai semua data kalau tidak ada top sources
     
     # Metrics with custom styling
     col1, col2, col3 = st.columns(3)
