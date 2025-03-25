@@ -1,4 +1,3 @@
-```python
 import streamlit as st
 import pandas as pd
 from typing import List, Dict, Any
@@ -150,4 +149,3 @@ def create_advanced_filters(df: pd.DataFrame):
     filter_manager.show_filter_summary(filtered_df)
     
     return filtered_df
-```
