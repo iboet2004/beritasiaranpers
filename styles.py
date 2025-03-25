@@ -79,6 +79,6 @@ def create_styled_metric(label, value, delta=None):
     <div class="metric-container">
         <div class="metric-title">{label}</div>
         <div class="metric-value">{value}</div>
-        {f'<div style="color: {"green" if delta and delta > 0 else "red"}; font-size: 0.8em;">{delta if delta else ""}</div>' if delta is not None else ''}
+        {f'<div style="color: {"green" if isinstance(delta, (int, float)) and delta > 0 else "red"}; font-size: 0.8em;">{delta if isinstance(delta, (int, float)) else ""}</div>' if delta is not None else ''}
     </div>
     """, unsafe_allow_html=True)
