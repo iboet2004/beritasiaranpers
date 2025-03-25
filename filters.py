@@ -138,13 +138,12 @@ def create_advanced_filters(df: pd.DataFrame):
     
     # Create dynamic filters
     filters = filter_manager.create_dynamic_filters()
-    
+
     # Apply filters
     filtered_df = filter_manager.apply_filters(
-        {col: st.sidebar.session_state.get(f"multiselect_filter_{col}", filters[col]) 
-         for col in filters}
+        {col: st.session_state.get(f"multiselect_filter_{col}", filters[col]) for col in filters}
     )
-    
+
     # Show filter summary
     filter_manager.show_filter_summary(filtered_df)
     
