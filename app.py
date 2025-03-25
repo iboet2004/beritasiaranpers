@@ -219,9 +219,18 @@ def main():
     sp_sources_col = df_sp.columns[3]
     sp_date_col = df_sp.columns[4]
 
+    # Konversi kolom tanggal ke format datetime dengan error handling
+    df_sp[sp_date_col] = pd.to_datetime(df_sp[sp_date_col], errors='coerce')
+
+    # Pastikan tidak semua data NaT
+    if df_sp[sp_date_col].isna().all():
+        st.error("Semua data di kolom PUBLIKASI tidak valid atau kosong!")
+        st.stop()
+
     # Add advanced filtering
     filtered_df_sp = create_advanced_filters(df_sp)
     filtered_df_berita = create_advanced_filters(df_berita)
+
     
     # Create tabs with improved styling
     tab1, tab2, tab3 = st.tabs(["🗒️ Siaran Pers", "📰 Pemberitaan", "🔍 Analisis Mendalam"])
