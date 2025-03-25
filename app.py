@@ -215,6 +215,10 @@ def main():
     sp_content_col = df_sp.columns[1]
     sp_sources_col = df_sp.columns[3]
     sp_date_col = df_sp.columns[4]
+
+    # Add advanced filtering
+    filtered_df_sp = create_advanced_filters(df_sp)
+    filtered_df_berita = create_advanced_filters(df_berita)
     
     # Create tabs with improved styling
     tab1, tab2, tab3 = st.tabs(["🗒️ Siaran Pers", "📰 Pemberitaan", "🔍 Analisis Mendalam"])
