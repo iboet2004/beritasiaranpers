@@ -127,6 +127,53 @@ def create_enhanced_wordcloud(text_series, title, width=800, height=400):
     
     st.pyplot(plt)
 
+def create_top_entities_chart(df, entity_col, top_n=10, title='Top Entitas'):
+    """
+    Create a chart showing top entities from a dataframe column
+    
+    Parameters:
+    - df: DataFrame berisi data
+    - entity_col: Nama kolom yang berisi entitas
+    - top_n: Jumlah entitas teratas yang akan ditampilkan
+    - title: Judul chart
+    """
+    # Pecah entitas yang dipisahkan semicolon
+    all_entities = df[entity_col].dropna().str.split(';').explode()
+    
+    # Bersihkan dan hitung frekuensi entitas
+    entity_counts = all_entities.str.strip().value_counts()
+    
+    # Ambil top N entitas
+    top_entities = entity_counts.head(top_n)
+    
+    # Buat bar chart interaktif menggunakan Plotly
+    fig = px.bar(
+        x=top_entities.index, 
+        y=top_entities.values,
+        title=title,
+        labels={'x': 'Entitas', 'y': 'Frekuensi'},
+        color=top_entities.values,
+        color_continuous_scale='Viridis'
+    )
+    
+    # Kustomisasi layout
+    fig.update_layout(
+        plot_bgcolor='rgba(240,240,240,0.1)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        title_font_size=16,
+        height=400,
+        xaxis_tickangle=-45
+    )
+    
+    # Tambahkan hover template
+    fig.update_traces(
+        hovertemplate='<b>%{x}</b><br>Frekuensi: %{y}<extra></extra>',
+        marker_line_color='rgb(50,50,50)',
+        marker_line_width=1.5
+    )
+    
+    st.plotly_chart(fig, use_container_width=True)
+
 def create_entity_network(df, entity_col, connection_col):
     """
     Create a network graph of entities
