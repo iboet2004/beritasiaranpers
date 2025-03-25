@@ -5,12 +5,10 @@ import plotly.graph_objects as go
 import numpy as np
 from data_loader import load_dataset, process_entities, get_unique_locations
 from visualization import (
-    create_advanced_bar_chart,
     create_interactive_timeline,
-    create_enhanced_wordcloud,
-    create_sources_trend_analysis
+    create_enhanced_wordcloud
 )
-from filters import create_advanced_filters  # Tambahan impor
+from filters import create_advanced_filters
 from styles import apply_custom_styling, create_styled_metric
 
 # Set page config
