@@ -6,6 +6,7 @@ import numpy as np
 from data_loader import load_dataset, process_entities, get_unique_locations
 from visualization import (
     create_interactive_timeline,
+    create_timeline_chart,
     create_enhanced_wordcloud
 )
 from filters import create_advanced_filters
