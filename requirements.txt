@@ -1,4 +1,3 @@
-```
 # Core Libraries
 streamlit
 pandas
@@ -27,4 +26,3 @@ flake8  # Linting
 
 # Security and Compatibility
 typing-extensions
-```
