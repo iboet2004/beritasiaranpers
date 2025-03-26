@@ -10,6 +10,7 @@ from visualization import (
     create_wordcloud,
 )
 from styles import apply_custom_styling, create_styled_metric
+from filters import create_advanced_filters
 
 # Set page config
 st.set_page_config(
@@ -209,7 +210,12 @@ def main():
     if df_sp.empty and df_berita.empty:
         st.error("Gagal memuat data")
         return
+
+     # Add advanced filtering
+    filtered_df_sp = create_advanced_filters(df_sp)
+    filtered_df_berita = create_advanced_filters(df_berita)
     
+    # Use filtered dataframes in subsequent visualizations
     # Column definitions
     sp_title_col = df_sp.columns[0]
     sp_content_col = df_sp.columns[1]
