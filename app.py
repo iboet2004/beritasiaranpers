@@ -5,10 +5,10 @@ import plotly.graph_objects as go
 import numpy as np
 from data_loader import load_dataset, process_entities, get_unique_locations
 from visualization import (
-    create_interactive_timeline,
-    create_enhanced_wordcloud
+    create_top_entities_chart, 
+    create_timeline_chart,
+    create_wordcloud,
 )
-from filters import create_advanced_filters
 from styles import apply_custom_styling, create_styled_metric
 
 # Set page config
@@ -140,12 +140,9 @@ def create_sources_trend_analysis(df, entity_col, date_col, selected_sp=None):
     
     # Select top 10 sources for visualization
     top_sources = narasumber_counts.head(10)
-
+    
     # Prepare data for top sources
-    if not top_sources.empty:
-        plot_data = weekly_counts[weekly_counts['Narasumber'].isin(top_sources.index)]
-    else:
-        plot_data = weekly_counts.copy()  # Pakai semua data kalau tidak ada top sources
+    plot_data = weekly_counts[weekly_counts['Narasumber'].isin(top_sources.index)]
     
     # Metrics with custom styling
     col1, col2, col3 = st.columns(3)
@@ -218,19 +215,6 @@ def main():
     sp_content_col = df_sp.columns[1]
     sp_sources_col = df_sp.columns[3]
     sp_date_col = df_sp.columns[4]
-
-    # Konversi kolom tanggal ke format datetime dengan error handling
-    df_sp[sp_date_col] = pd.to_datetime(df_sp[sp_date_col], errors='coerce')
-
-    # Pastikan tidak semua data NaT
-    if df_sp[sp_date_col].isna().all():
-        st.error("Semua data di kolom PUBLIKASI tidak valid atau kosong!")
-        st.stop()
-
-    # Add advanced filtering
-    filtered_df_sp = create_advanced_filters(df_sp)
-    filtered_df_berita = create_advanced_filters(df_berita)
-
     
     # Create tabs with improved styling
     tab1, tab2, tab3 = st.tabs(["🗒️ Siaran Pers", "📰 Pemberitaan", "🔍 Analisis Mendalam"])
